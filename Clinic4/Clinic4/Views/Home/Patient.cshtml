@@ -5,17 +5,13 @@
 
 @* test data below*@
 @{
+    // check if the user is logged in here
 
-    user testuser = new user();
-
-    testuser.UserName = "testUser";
-    testuser.Id = 101;
-    testuser.DoctorId = 11;
-    testuser.UserRole = "Patient";
-
+    // for testing
+    bool loggedIn = false;
 }
 
-@if (testuser.Id == 0)
+@if (loggedIn == false)
 {
     <h2 class="display-4">Welcome to our web clinic</h2>
     <p class="lead">
@@ -30,7 +26,7 @@
 }
 else
 {
-    <h2 class="display-4">Hello @testuser.UserName</h2>
+    <h2 class="display-4">Hello (userName)</h2>
     <p class="lead">What would you like to do today?</p>
 
     <div class="list-group">
