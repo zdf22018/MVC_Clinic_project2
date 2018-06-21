@@ -1,0 +1,105 @@
+﻿@model Clinic4.Models.availability
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddAvailability_get</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Add Availability</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AvailableFrom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownList("Available From", new List<SelectListItem>
+               {
+                   new SelectListItem {Text ="8:00", Value ="8"},
+                   new SelectListItem {Text ="9:00", Value ="9"},
+                    new SelectListItem {Text ="10:00", Value ="10"},
+                   new SelectListItem {Text ="11:00", Value ="11"},
+                    new SelectListItem {Text ="12:00", Value ="12"},
+                   new SelectListItem {Text ="13:00", Value ="13"},
+                    new SelectListItem {Text ="14:00", Value ="14"},
+                   new SelectListItem {Text ="15:00", Value ="15"},
+                   new SelectListItem {Text ="16:00", Value ="16"},
+
+               }, "Select start from")
+                @Html.ValidationMessageFor(model => model.AvailableFrom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AvailableTo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownList("Available To", new List<SelectListItem>
+   {
+
+       new SelectListItem {Text ="9:00", Value ="9"},
+        new SelectListItem {Text ="10:00", Value ="10"},
+       new SelectListItem {Text ="11:00", Value ="11"},
+        new SelectListItem {Text ="12:00", Value ="12"},
+       new SelectListItem {Text ="13:00", Value ="13"},
+        new SelectListItem {Text ="14:00", Value ="14"},
+       new SelectListItem {Text ="15:00", Value ="15"},
+       new SelectListItem {Text ="16:00", Value ="16"},
+       new SelectListItem {Text ="17:00", Value ="17"},
+
+   }, "Select start from")
+                @Html.ValidationMessageFor(model => model.AvailableTo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AppointmentDuration, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Duration", new List<SelectListItem>
+{
+
+new SelectListItem {Text ="60 Minutes", Value ="60"},
+new SelectListItem {Text ="30 Minutes", Value ="30"},
+
+
+}, "Select appointment duration")                    @Html.ValidationMessageFor(model => model.AppointmentDuration, "", new { @class = "text-danger" })
+</div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Add" class="btn btn-default" />
+    </div>
+</div>
+
+}
+
+    <div>
+        @Html.ActionLink("Back to List", "GetAvailabilities")
+    </div>
+</body>
+</html>
+

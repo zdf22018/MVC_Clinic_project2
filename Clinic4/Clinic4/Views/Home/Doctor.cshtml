@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Doctor";
+}
+
+<h2>Doctor</h2>
+<ul>
+    <li>@Html.ActionLink("View Patients", "getAllPatients", "Doctor")</li>
+    <li>@Html.ActionLink("My Profile", "getDoctorById", "Doctor")</li>
+    <li>@Html.ActionLink("My Schedule", "getDoctorSchedule", "Doctor")</li>
+    <li>@Html.ActionLink("Manage Availabilities ", "GetAvailabilities", "Doctor")</li>
+</ul>

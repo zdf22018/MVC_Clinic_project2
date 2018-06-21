@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Clinic4.Models.availability>
+
+@{
+    ViewBag.Title = "GetAvailabilities";
+}
+
+<h2>GetAvailabilities</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetAvailabilities</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.doctor.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentDuration)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.doctor.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailableFrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailableTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentDuration)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

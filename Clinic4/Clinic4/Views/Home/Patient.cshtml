@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Patients Area";
+}
+
+@* test data below*@
+@{
+
+    user testuser = new user();
+
+    testuser.UserName = "testUser";
+    testuser.Id = 101;
+    testuser.DoctorId = 11;
+    testuser.UserRole = "Patient";
+
+}
+
+@if (testuser.Id == 0)
+{
+    <h2 class="display-4">Welcome to our web clinic</h2>
+    <p class="lead">
+        I f you would like to book an appointment with one of our doctors, please log in to your existing account
+        or register a new one
+    </p>
+
+    // code below creates 2 anchors that act like buttons
+    @Html.ActionLink("Log In", "Login", "Account", null, new { @class = "btn btn-info mr-2" })
+    @Html.ActionLink("Register", "Register", "Account", null, new { @class = "btn btn-info" })
+
+}
+else
+{
+    <h2 class="display-4">Hello @testuser.UserName</h2>
+    <p class="lead">What would you like to do today?</p>
+
+    <div class="list-group">
+        @* Note I called the first link "MyProfile" because Profile was causing some conflicts *@
+
+        <!-- the links are using unobstrusive ajax to append partial views instead of navigating to another page -->
+        <!-- My Profile -->
+        @(
+                Ajax.ActionLink("View My Profile", "MyProfile", "Patient", null,
+                new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "contentDiv" },
+                new { @class = "list-group-item list-group-item-action", @id = "test" })
+        )
+        <!-- Book Appointment -->
+        @(
+                Ajax.ActionLink("Book an Appointment", "BookAppointment", "Patient", null,
+                new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "contentDiv" },
+                new { @class = "list-group-item list-group-item-action", @id = "test" })
+        )
+        <!-- Manage Appointments -->
+        @(
+                Ajax.ActionLink("Manage my Appointments", "ManageAppointments", "Patient", null,
+                new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "contentDiv" },
+                new { @class = "list-group-item list-group-item-action", @id = "test" })
+        )
+        <!-- Logout is a little different, not implemented yet -->
+        @Html.ActionLink("Logout", "Logout", "Patient", null, new { @class = "list-group-item list-group-item-action" })
+
+        @*
+            @Html.ActionLink("View my Profile", "MyProfile", "Patient", null, new { @class = "list-group-item list-group-item-action" })
+            @Html.ActionLink("Book an Appointment", "BookAppointment", "Patient", null, new { @class = "list-group-item list-group-item-action" })
+            @Html.ActionLink("Manage my Appointments", "ManageAppointments", "Patient", null, new { @class = "list-group-item list-group-item-action" })
+        *@
+
+    </div>
+
+
+
+
+
+
+    <div id="contentDiv"></div>
+
+    @section scripts{
+        @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+    }
+
+    <!-- move this below to an external file -->
+    <!--
+    <script>
+
+    </script>
+        -->
+}
