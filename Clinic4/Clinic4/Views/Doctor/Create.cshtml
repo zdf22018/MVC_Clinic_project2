@@ -10,9 +10,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>AddAvailability_get</title>
+    <title>Add Availability</title>
+   
 </head>
 <body>
+    @if (TempData["notice"] != null)
+    {
+        <p>@TempData["notice"]</p>
+    }
+    @Html.HiddenFor(m => m.DoctorId)
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -88,6 +95,8 @@ new SelectListItem {Text ="30 Minutes", Value ="30"},
 }, "Select appointment duration")                    @Html.ValidationMessageFor(model => model.AppointmentDuration, "", new { @class = "text-danger" })
 </div>
 </div>
+
+
 
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">

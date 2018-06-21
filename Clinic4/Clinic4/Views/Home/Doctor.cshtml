@@ -5,9 +5,10 @@
 @{
     string ID = null;
 
-    if (ViewData["DoctorId"] != null)
+    if (Session["DoctorId"] != null)
     {
-        ID = ViewData["DoctorId"].ToString();
+        ID = Session["DoctorId"].ToString();
+        
     }
 }
     

@@ -28,7 +28,7 @@ namespace Clinic4.Controllers
             {
                 FormsAuthentication.SetAuthCookie("Cookie", true);
                 var u = users[0];
-                
+
                 if (u.UserRole == "Admin")
                 {
                     ViewData["UserRole"] = u.UserRole;
@@ -36,7 +36,9 @@ namespace Clinic4.Controllers
                 }
                 else if (u.UserRole == "Doctor")
                 {
-                    ViewData["DoctorId"] = u.DoctorId;
+                    //TempData["DoctorId"] = u.DoctorId;
+                    Session["DoctorId"] = u.DoctorId;
+
                     return View("~/Views/Home/Doctor.cshtml");
                 }
                 else
@@ -56,7 +58,9 @@ namespace Clinic4.Controllers
             }
             else
             {
-                return View("Login");
+                TempData["notice"] = "login is not correct";
+                return View("Login1");
+
             }
         }
     }

@@ -171,6 +171,7 @@
     <Compile Include="Models\patient.cs" />
     <Compile Include="Models\PatientRepository.cs" />
     <Compile Include="Models\take_Appointment.cs" />
+    <Compile Include="Models\TimeOverLapping.cs" />
     <Compile Include="Models\timeslot.cs" />
     <Compile Include="Models\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

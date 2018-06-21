@@ -32,32 +32,29 @@ namespace Clinic4.Models
         //display availability
         public List<availability> GetAvailabilities(int id)
         {
-            var doctorA = (from a in context.availabilities where a.DoctorId == id select a).ToList();
+            var doctorA = (from a in context.availabilities where a.DoctorId == id && a.AvailableTo > DateTime.Now select a).ToList();
             return doctorA;
         }
         // Add Availability
-        public void AddAvailability(availability a)
-        {
-            // this function need validation to check the one being added is not overlaping with existing ones.
-            //code???
-            //check the sTime if is overlapping with existing availabilities
-            bool CanAddAvailability = true;
-            var list = (from av in context.availabilities where av.DoctorId == a.DoctorId select av).ToList();
-            foreach (availability x in list)
-            {
-                if (a.AvailableFrom >= x.AvailableFrom && a.AvailableFrom <= x.AvailableTo) { CanAddAvailability = false; }
+        //public void AddAvailability(availability a)
+        //{
+        //    // this function need validation to check the one being added is not overlaping with existing ones.
+        //    //code???
+        //    //check the sTime if is overlapping with existing availabilities
+        //    bool CanAddAvailability = true;
+        //    var list = (from av in context.availabilities where av.DoctorId == a.DoctorId select av).ToList();
+        //    foreach (availability x in list)
+        //    {
+        //        if (a.AvailableFrom >= x.AvailableFrom && a.AvailableFrom <= x.AvailableTo) { CanAddAvailability = false; }
 
-            }
-            if (CanAddAvailability)
-            {
-                context.availabilities.Add(a);
-                context.SaveChanges();
+        //    }
+        //    if (CanAddAvailability)
+        //    {
+        //        context.availabilities.Add(a);
+        //        context.SaveChanges();
 
-            }
-            if (!CanAddAvailability)
-            {
-                // redirect to add availability_get page.
-            }
+        //    }
+            
 
 
 
@@ -65,4 +62,3 @@ namespace Clinic4.Models
 
 
     }
-}

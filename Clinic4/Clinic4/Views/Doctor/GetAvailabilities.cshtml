@@ -4,8 +4,12 @@
     ViewBag.Title = "GetAvailabilities";
 }
 
-<h2>GetAvailabilities</h2>
 
+<h2>My Availabilities</h2>
+@if (TempData["notice"] != null)
+{
+    <p>@TempData["notice"]</p>
+}
 <!DOCTYPE html>
 
 <html>
@@ -45,6 +49,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.AvailableFrom)
