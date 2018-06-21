@@ -10,27 +10,39 @@
     ViewBag.Title = "MyProfile";
 }
 
-<h2>My profile</h2>
-<table>
+<h2 class="display-4">My profile</h2>
+<table class="table">
     <tr>
-        <th>Id</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Speciality</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>User Name</th>
-        <th>Login Password</th>
-    </tr>
-    <tr>
+        <th>Doctor Id</th>
         <td>@Model.Id</td>
-        <td>@Model.FirstName</td>
-        <td>@Model.LastName</td>
-        <td>@Model.Speciality</td>
-        <td>@Model.Phone</td>
-        <td>@Model.Email</td>
-        <td>@Model.UserName</td>
-        <td>@Model.LoginPassWord</td>
-        <td>@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })</td>
     </tr>
+    <tr>
+        <th>First Name</th>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+        <th>Speciality</th>
+        <td>@Model.Speciality</td>
+    </tr>
+    <tr>
+        <th>Phone</th>
+        <td>@Model.Phone</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>User Name</th>
+        <td>@Model.UserName</td>
+    </tr>
+    <tr>
+        <th>Login Password</th>
+        <td>@Model.LoginPassWord</td>
+    </tr>
+    <tr>
+        <td colspan="2">@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })</td>
+    </tr>
+
 </table>
+
