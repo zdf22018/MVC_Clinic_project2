@@ -43,7 +43,14 @@ namespace Clinic4.Controllers
                 {
                     patient patient = (from p in context.patients where p.Id == u.PatientId select p).SingleOrDefault();
                     ViewData["PatientId"] = patient.Id;
-                    return View("~/Views/Home/Patient.cshtml", patient);
+
+                    // cant pass object with redirect to action, so adding it to TempData
+                    // probably not a safe way to do this since it contains sensitive data?
+                    //TempData["Patient"] = patient;
+
+                    System.Web.HttpContext.Current.Session["UserId"] = patient.Id;
+                    return RedirectToAction("Patient", "Home", new { id = patient.Id });
+                    //return View("~/Views/Home/Patient.cshtml", patient);
                 }
 
             }

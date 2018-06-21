@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clinic4.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -44,8 +45,24 @@ namespace Clinic4.Controllers
 
         public ActionResult Patient()
         {
+            if (Url.RequestContext.RouteData.Values["id"] != null)
+            {
+                int id = Int32.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+                PatientRepository repo = new PatientRepository();
+                return View(repo.GetPatientByID(id));
+            }
+            /*
+            ViewData["UserId"] = System.Web.HttpContext.Current.Session["UserId"] as String;
 
-            return View();
+            if (ViewData["UserId"] != null)
+            {
+                
+            }
+            */
+            else
+            {
+                return View();
+            }
         }
     }
 }
