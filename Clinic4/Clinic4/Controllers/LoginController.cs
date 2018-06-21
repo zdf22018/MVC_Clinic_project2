@@ -31,7 +31,8 @@ namespace Clinic4.Controllers
                 
                 if (u.UserRole == "Admin")
                 {
-                    return View("Admin");
+                    ViewData["UserRole"] = u.UserRole;
+                    return View("~/Views/Home/Admin.cshtml");
                 }
                 else if (u.UserRole == "Doctor")
                 {

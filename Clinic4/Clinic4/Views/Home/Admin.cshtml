@@ -3,12 +3,32 @@
     ViewBag.Title = "Admin";
 }
 
-<h2>Admin</h2>
+@{
+    string Role = null;
 
-<ul>
-    <li>@Html.ActionLink("Manage Doctors", "?", "Admin")</li>
-    <li>@Html.ActionLink("Manage Patients", "?", "Admin")</li>
-    <li>@Html.ActionLink("Manage Appointments", "?", "Admin")</li>
-    <li>@Html.ActionLink("Manage Time Slots ", "?", "Admin")</li>
-    <li>@Html.ActionLink("log out ", "?", "Admin")</li>
-</ul>
+    if (ViewData["UserRole"] != null)
+    {
+        Role = ViewData["UserRole"].ToString();
+    }
+}
+
+
+@if (Role != null)
+{
+    <h2>User Role is: @Role</h2>
+    <ul>
+        <li>@Html.ActionLink("Manage Doctors", "?", "Admin")</li>
+        <li>@Html.ActionLink("Manage Patients", "?", "Admin")</li>
+        <li>@Html.ActionLink("Manage Appointments", "?", "Admin")</li>
+        <li>@Html.ActionLink("Manage Time Slots ", "?", "Admin")</li>
+        <li>@Html.ActionLink("log out ", "?", "Admin")</li>
+    </ul>
+}
+else
+{
+
+    <h2>Please Login to access this page</h2>
+
+    @Html.ActionLink("Log In", "Authenticate", "Login", null, new { @class = "btn btn-info mr-2" })
+    @* @Html.ActionLink("Register", "Register", "Login", null, new { @class = "btn btn-info" }) *@
+}

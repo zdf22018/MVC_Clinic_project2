@@ -18,8 +18,8 @@
     <ul>
         <li>@Html.ActionLink("View Patients", "getAllPatients", "Doctor")</li>
         <li>@Html.ActionLink("My Profile", "MyProfile", "Doctor", new { id = ID }, null)</li>
-        <li>@Html.ActionLink("My Schedule", "getDoctorSchedule", "Doctor")</li>
-        <li>@Html.ActionLink("Manage Availabilities ", "GetAvailabilities", "Doctor")</li>
+        <li>@Html.ActionLink("My Schedule", "getDoctorSchedule", "Doctor", new { id = ID }, null)</li>
+        <li>@Html.ActionLink("Manage Availabilities ", "GetAvailabilities", "Doctor", new { id = ID }, null)</li>
     </ul>
 }
 
