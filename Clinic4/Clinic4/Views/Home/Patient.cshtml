@@ -1,32 +1,35 @@
-﻿
+﻿@model Clinic4.Models.patient
+
 @{
     ViewBag.Title = "Patients Area";
+
+    // check if user is logged in, for now only patients can access this page
+    string ID = null;
+
+    if (ViewData["PatientId"] != null)
+    {
+        ID = ViewData["PatientId"].ToString();
+    }
+
 }
 
-@* test data below*@
-@{
-    // check if the user is logged in here
 
-    // for testing
-    bool loggedIn = true;
-}
-
-@if (loggedIn == false)
+@if (ID == null)
 {
     <h2 class="display-4">Welcome to our web clinic</h2>
     <p class="lead">
-        I f you would like to book an appointment with one of our doctors, please log in to your existing account
+        If you would like to book an appointment with one of our doctors, please log in to your existing account
         or register a new one
     </p>
 
     // code below creates 2 anchors that act like buttons
-    @Html.ActionLink("Log In", "Login", "Account", null, new { @class = "btn btn-info mr-2" })
+    @Html.ActionLink("Log In", "Authenticate", "Login", null, new { @class = "btn btn-info mr-2" })
     @Html.ActionLink("Register", "Register", "Account", null, new { @class = "btn btn-info" })
 
 }
 else
 {
-    <h2 class="display-4">Hello (userName)</h2>
+    <h2 class="display-4">Hello @Model.UserName</h2>
     <p class="lead">What would you like to do today?</p>
 
     <div class="list-group">

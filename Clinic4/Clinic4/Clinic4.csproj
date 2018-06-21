@@ -169,6 +169,7 @@
     <Compile Include="Models\doctor_schedule.cs" />
     <Compile Include="Models\ModelClinic.cs" />
     <Compile Include="Models\patient.cs" />
+    <Compile Include="Models\PatientRepository.cs" />
     <Compile Include="Models\take_Appointment.cs" />
     <Compile Include="Models\timeslot.cs" />
     <Compile Include="Models\user.cs" />

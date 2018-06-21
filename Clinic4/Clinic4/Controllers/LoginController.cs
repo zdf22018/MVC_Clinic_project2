@@ -40,7 +40,9 @@ namespace Clinic4.Controllers
                 }
                 else
                 {
-                    return View("Patient");
+                    patient patient = (from p in context.patients where p.Id == u.PatientId select p).SingleOrDefault();
+                    ViewData["PatientId"] = patient.Id;
+                    return View("~/Views/Home/Patient.cshtml", patient);
                 }
 
             }
