@@ -2,11 +2,32 @@
 @{
     ViewBag.Title = "Doctor";
 }
+@{
+    string ID = null;
 
-<h2>Doctor</h2>
-<ul>
-    <li>@Html.ActionLink("View Patients", "getAllPatients", "Doctor")</li>
-    <li>@Html.ActionLink("My Profile", "getDoctorById", "Doctor")</li>
-    <li>@Html.ActionLink("My Schedule", "getDoctorSchedule", "Doctor")</li>
-    <li>@Html.ActionLink("Manage Availabilities ", "GetAvailabilities", "Doctor")</li>
-</ul>
+    if (ViewData["DoctorId"] != null)
+    {
+        ID = ViewData["DoctorId"].ToString();
+    }
+}
+    
+
+@if (ID != null)
+{
+    <h2>Doctor ID: @ID</h2>
+    <ul>
+        <li>@Html.ActionLink("View Patients", "getAllPatients", "Doctor")</li>
+        <li>@Html.ActionLink("My Profile", "MyProfile", "Doctor", new { id = ID }, null)</li>
+        <li>@Html.ActionLink("My Schedule", "getDoctorSchedule", "Doctor")</li>
+        <li>@Html.ActionLink("Manage Availabilities ", "GetAvailabilities", "Doctor")</li>
+    </ul>
+}
+
+else
+{
+    <h2>Please Login to access this page</h2>
+
+    @Html.ActionLink("Log In", "Authenticate", "Login", null, new { @class = "btn btn-info mr-2" })
+    @* @Html.ActionLink("Register", "Register", "Login", null, new { @class = "btn btn-info" }) *@
+}
+

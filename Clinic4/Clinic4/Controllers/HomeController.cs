@@ -11,7 +11,7 @@ namespace Clinic4.Controllers
 
         public ActionResult Index()
         {
-            System.Web.HttpContext.Current.Session["loggedIn"] = false;
+            //System.Web.HttpContext.Current.Session["loggedIn"] = false;
 
             return View();
         }
@@ -41,9 +41,9 @@ namespace Clinic4.Controllers
 
             return View();
         }
+
         public ActionResult Patient()
         {
-
 
             return View();
         }

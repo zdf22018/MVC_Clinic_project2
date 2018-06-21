@@ -70,5 +70,12 @@ namespace Clinic4.Controllers
 
 
         }
+
+        public ActionResult MyProfile(int id)
+        {
+            DoctorRepository r = new DoctorRepository();
+            var doctor = r.GetDoctorById(id);
+            return View(doctor);
+        }
     }
 }
