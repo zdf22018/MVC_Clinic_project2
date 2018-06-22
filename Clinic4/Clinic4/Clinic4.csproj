@@ -152,11 +152,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminDoctorController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\AdminPatientController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -286,10 +287,19 @@
     <Content Include="Views\Patient\ToManageAppointments.cshtml" />
     <Content Include="Views\Patient\DisplayAvailableSlots.cshtml" />
     <Content Include="Views\Doctor\EditDoctor.cshtml" />
+    <Content Include="Views\AdminDoctor\Create.cshtml" />
+    <Content Include="Views\AdminDoctor\Delete.cshtml" />
+    <Content Include="Views\AdminDoctor\Details.cshtml" />
+    <Content Include="Views\AdminDoctor\Edit.cshtml" />
+    <Content Include="Views\AdminDoctor\Index.cshtml" />
+    <Content Include="Views\AdminPatient\Create.cshtml" />
+    <Content Include="Views\AdminPatient\Delete.cshtml" />
+    <Content Include="Views\AdminPatient\Details.cshtml" />
+    <Content Include="Views\AdminPatient\Edit.cshtml" />
+    <Content Include="Views\AdminPatient\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
