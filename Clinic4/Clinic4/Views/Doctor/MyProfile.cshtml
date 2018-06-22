@@ -8,6 +8,7 @@
 
 @{
     ViewBag.Title = "MyProfile";
+    string docId = Session["DoctorId"].ToString();
 }
 
 <h2 class="display-4">My profile</h2>
@@ -41,7 +42,7 @@
         <td>@Model.LoginPassWord</td>
     </tr>
     <tr>
-        <td colspan="2">@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })</td>
+        <td colspan="2">@Html.ActionLink("Edit", "EditDoctor", new {id=docId })</td>
     </tr>
 
 </table>
