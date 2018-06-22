@@ -8,7 +8,7 @@ namespace Clinic4.ViewModels
 {
     public class PatientAppointmentsViewModel
     {
-        public List<PatientAppointment> Appointments { get; set; }
+        //public List<PatientAppointment> Appointments { get; set; }
         
     }
 }

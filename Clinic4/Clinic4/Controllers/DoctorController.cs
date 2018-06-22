@@ -68,19 +68,20 @@ namespace Clinic4.Controllers
                 if (a.AvailableFrom >= x.AvailableFrom && a.AvailableFrom <= x.AvailableTo) { CanAddAvailability = false; }
 
             }
-           if (CanAddAvailability) { 
-            
+            if (CanAddAvailability)
+            {
+
                 context.availabilities.Add(a);
                 context.SaveChanges();
                 TempData["notice"] = "Successfully added Availability";
                 RedirectToAction("GetAvailabilities", new { id = TempData["DoctorId"] });
 
             }
-         if(!CanAddAvailability)
+            if (!CanAddAvailability)
             {
                 TempData["notice"] = "Not Added because of time overlapping";
-             
-             
+
+
             }
             return View();
 
@@ -92,5 +93,35 @@ namespace Clinic4.Controllers
             var doctor = r.GetDoctorById(id);
             return View(doctor);
         }
+        public ActionResult EditDoctor(int id)
+        {
+            DoctorRepository r = new DoctorRepository();
+            var doctor = r.GetDoctorById(id);
+            return View(doctor);
+
+        }
+        [HttpPost]
+        public ActionResult EditDoctor(doctor doc)
+        {
+            ModelClinic context = new ModelClinic();
+            var d = context.doctors.Single(x => x.Id == doc.Id);
+            int returnValue = 0;
+            d.Id = doc.Id;
+            d.FirstName = doc.FirstName;
+            d.LastName = doc.LastName;
+            d.Phone = doc.Phone;
+            d.Speciality = doc.Speciality;
+            d.Email = doc.Email;
+            d.UserName = doc.UserName;
+            d.LoginPassWord = doc.LoginPassWord;
+            returnValue = context.SaveChanges();
+            if (returnValue > 0)
+            { TempData["notice"] = " User profiles have been updated successfully."; }
+            else
+            { TempData["notice"] = "No updates have been written to the database."; }
+            return View("EditDoctor");
+
+        }
+
     }
 }
