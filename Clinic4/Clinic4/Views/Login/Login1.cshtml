@@ -8,20 +8,23 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <title>Login</title>
 </head>
 <body>
-    <div>
+    <div class="list-group">
         @if (TempData["notice"] != null)
         {
-        <p>@TempData["notice"]</p>}
+            <p>@TempData["notice"]</p>}
 
         <h2>Please login</h2>
-        <form method="post" action="Validate">
-            User Name: <input name="UserName" type="text" /><br />
-            User Password: <input name="Password" type="text" /><br />
-            <input id="Submit1" type="submit" value="submit" />
+        <form method="post" action="Validate" class="form-control">
+            <span class="align-content-md-stretch">User Name:</span> <input name="UserName" type="text" /><br />
+            <span class="align-content-md-stretch">User Password: </span><input name="Password" type="text" /><br />
+            <input class="btn-outline-primary" id="Submit1" type="submit" value="submit" />
         </form>
     </div>
+    
+
 </body>
 </html>
