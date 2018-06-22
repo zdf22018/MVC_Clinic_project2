@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Clinic4.Models.display_available_slots>
+
+@{
+    ViewBag.Title = "DisplayAvailableSlots";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DisplayAvailableSlots</h2>
+
+<p>
+   
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Start)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.End)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Doctor)
+        </th>
+     </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.End)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Doctor)
+        </td>
+        <td>
+            @Html.ActionLink("Take Appointment", "Take Appointment", new { /* id=item.PrimaryKey */ })
+
+        </td>
+    </tr>
+}
+
+</table>

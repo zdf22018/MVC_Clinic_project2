@@ -1,5 +1,5 @@
 ﻿using Clinic4.Models;
-using Clinic4.ViewModels;
+//using Clinic4.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,15 +28,11 @@ namespace Clinic4.Controllers
         {
             return View();
         }
-        public ActionResult ManageAppointments(int id)
+        public ActionResult ToManageAppointments(int id)
         {
-            repo.GetPatientAppointmentsById(id);
-            PatientAppointmentsViewModel vm = new PatientAppointmentsViewModel
-            {
-                Appointments = repo.GetPatientAppointmentsById(id)
-            };
 
-            return View(vm);
+            var appointments = repo.GetPatientAppointmentsById(id);
+            return View(appointments);
         }
         public ActionResult Logout()
         {
@@ -45,6 +41,13 @@ namespace Clinic4.Controllers
         public ActionResult partialTestView()
         {
             return PartialView();
+        }
+
+        public ActionResult DisplayAvailableSlots()
+        {
+            ModelClinic context = new ModelClinic();
+            var Slots = context.display_available_slots.ToList();
+            return View(Slots);
         }
     }
 }
