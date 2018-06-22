@@ -1,4 +1,5 @@
 ﻿using Clinic4.Models;
+using Clinic4.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,8 +30,13 @@ namespace Clinic4.Controllers
         }
         public ActionResult ManageAppointments(int id)
         {
-            patient patient = repo.GetPatientByID(id);
-            return View(patient);
+            repo.GetPatientAppointmentsById(id);
+            PatientAppointmentsViewModel vm = new PatientAppointmentsViewModel
+            {
+                Appointments = repo.GetPatientAppointmentsById(id)
+            };
+
+            return View(vm);
         }
         public ActionResult Logout()
         {
