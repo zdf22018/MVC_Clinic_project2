@@ -10,7 +10,7 @@ namespace Clinic4.Models
         // from appointments -> patientId -> patients
         public string PatientName { get; set; } // FullName (if that works, its an auto generated column)
 
-
+            
         // from availability
         public DateTime? AppointmentDate { get; set; } // AvailableFrom
         //public int AppointmentDuration { get; set; } // AppointmentDuration
