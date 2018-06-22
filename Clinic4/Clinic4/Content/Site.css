@@ -22,3 +22,16 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.homeBannerDiv {
+    background: url("../Images/HomeImage.jpg") no-repeat center center;
+    background-size: cover;
+    opacity: 0.9;
+}
+
+.homeBannerInnerDiv {
+    background-color: #0d205f;
+    opacity: 0.8;
+    color: white;
+    padding: 2%;
+}
