@@ -1,0 +1,80 @@
+﻿@*
+    
+
+@model Clinic4.Models.appointment
+
+@{
+    ViewBag.Title = "My Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    int ID = 0;
+
+    if (Model.Id != 0)
+    {
+        ID = Model.Id;
+    }
+
+}
+
+@if (ID == 0)
+{
+    <h2 class="display-4">Login Requiredc</h2>
+    <p class="lead">
+        To access your profile, please login to your account first
+    </p>
+
+    // code below creates 2 anchors that act like buttons
+    @Html.ActionLink("Log In", "Authenticate", "Login", null, new { @class = "btn btn-info mr-2" })
+    @Html.ActionLink("Register", "Register", "Account", null, new { @class = "btn btn-info" })
+
+}
+else
+{
+    <h2 class="display-4">Manage Appointments</h2>
+    <table class="table">
+        <tr>
+            <th>Patient Id</th>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td>@Model.FirstName</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>@Model.LastName</td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>@Model.Phone</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <th>Date of birth</th>
+            <td>@Model.DateOfBirth</td>
+        </tr>
+        <tr>
+            <th>Medical Card Number</th>
+            <td>@Model.MedicalCardNo</td>
+        </tr>
+        <tr>
+            <th>User Name</th>
+            <td>@Model.UserName</td>
+        </tr>
+        <tr>
+            <th>Login Password</th>
+            <td>@Model.LoginPassWord</td>
+        </tr>
+        <tr>
+            <td colspan="2">@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })</td>
+        </tr>
+
+    </table>
+}
+
+
+*@
+

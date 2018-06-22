@@ -27,9 +27,10 @@ namespace Clinic4.Controllers
         {
             return View();
         }
-        public ActionResult ManageAppointments()
+        public ActionResult ManageAppointments(int id)
         {
-            return View();
+            patient patient = repo.GetPatientByID(id);
+            return View(patient);
         }
         public ActionResult Logout()
         {

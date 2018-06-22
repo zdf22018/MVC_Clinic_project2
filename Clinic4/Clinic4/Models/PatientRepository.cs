@@ -13,5 +13,10 @@ namespace Clinic4.Models
         {
             return (from p in context.patients where p.Id == id select p).SingleOrDefault();
         }
+
+        public List<appointment> GetPatientAppointmentsById(int id)
+        {
+            return (from a in context.appointments where a.PatientId == id select a).ToList();
+        }
     }
 }
