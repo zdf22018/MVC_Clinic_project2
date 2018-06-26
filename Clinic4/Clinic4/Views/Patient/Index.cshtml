@@ -4,4 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    var appointmentAdded = 
+        HttpContext.Current.Request.RequestContext.RouteData.Values["appointmentAdded"];   
+}
+
+@if (appointmentAdded != null)
+{
+    if ((bool)appointmentAdded == true)
+    {
+        <h1>Succesfully added a new appointment!</h1>
+    }
+}
+
 <h2>Index</h2>

@@ -18,7 +18,7 @@ namespace Clinic4.Models
         [StringLength(101)]
         public string Doctor { get; set; }
 
-        public DateTime? Start { get; set; }
+        public DateTime Start { get; set; }
 
         public DateTime? End { get; set; }
     }
